@@ -1,0 +1,167 @@
+<html lang="en"><head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<title>IPL 2024</title>
+  <link rel="shortcut icon" type="image/x-icon" href="#">
+  <meta property="og:title" content="Vipul Sports">
+    <meta property="og:description" content="Watch TATA IPL Bindass.">
+    <meta property="og:image" content="#">
+    <meta property="og:url" content="#">
+    
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min_1.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&amp;display=swap" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.min_1.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Righteous&amp;display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/channel.css">
+  <link rel="stylesheet" href="css/rainbow/top.css">
+  <link rel="stylesheet" href="css/wrapper.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Poppins:wght@500;600&family=REM:wght@600&family=Rowdies&display=swap');
+  </style>
+  <script src="js/jquery.min_2.js"></script>
+  <script src="js/lazysizes.min.js"></script>
+  
+  
+  
+</head><body>
+
+  <div class="header">
+    <div class="stwRainbowTop"></div>
+
+    <div class="stwBlurRainbowTop"></div>
+
+
+
+
+        <div id="container"></div>
+
+    
+    
+    <div class="footer">
+      <div style="display:inline-block">
+        <b><a href="#"><button class="btn-11 custom-btn" style="width:70vw;height:40px;margin-top:10px;font-size:15px; font-family: 'Oswald', sans-serif">Join the Telegram Channel</button></a><b></b></b>
+        <div class="stwRainbow"></div> 
+        <div class="stwBlurRainbow"></div> <br>
+        	
+        
+<script>
+    // Function to fetch JSON data from URL
+    async function fetchJsonData(url) {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching JSON:', error);
+        }
+    }
+
+    // Function to generate HTML from JSON data
+    async function generateHtmlFromJson(url) {
+        const jsonData = await fetchJsonData(url);
+        if (!jsonData) {
+            console.error('No JSON data available');
+            return;
+        }
+
+        const container = document.getElementById('container');
+        jsonData.forEach(function(item) {
+            const anchor = document.createElement('a');
+            anchor.href = `Play.html?id=${item.id}`;
+
+            const divItem = document.createElement('div');
+            divItem.classList.add('tvv-item');
+
+            const image = document.createElement('img');
+            image.classList.add('loading');
+            image.src = item.logo;
+
+            const divName = document.createElement('div');
+            divName.classList.add('tvv-name');
+            divName.textContent = item.name;
+
+            divItem.appendChild(image);
+            divItem.appendChild(divName);
+            anchor.appendChild(divItem);
+            container.appendChild(anchor);
+        });
+    }
+
+    // Call the function to generate HTML from JSON URL
+    generateHtmlFromJson('M1.json');
+</script>
+
+
+        <script>
+          $(document).ready(function () {
+            var dftr = $('select.dftr'),
+              headerCount = $('#headerCount');
+            headerCount.html('select a filter or use search');
+            dftr.on('change', function () {
+              dftr.attr('disabled', 'disabled');
+              var records = $('#tvvTable').find('.tvv-item');
+              records.hide();
+              var critriaAttributes = [];
+              dftr.each(function () {
+                var $this = $(this),
+                  $selectedLength = $this.find(':selected').length,
+                  $critriaAttribute = '';
+                if ($selectedLength > 0 && $this.val() != '0') {
+                  if ($selectedLength == 1) {
+                    $critriaAttribute += '[data-' + $this.data('attribute') + '*="' + $this.val() + '"]';
+                  } else {
+                    var $startDataAttribute = '[data-' + $this.data('attribute') + '*="',
+                      $endDataAttribute = '"]',
+                      $selectedValues = $this.val().toString();
+                    $critriaAttribute += $startDataAttribute + $selectedValues.replaceAll(',', ($endDataAttribute + ',' + $startDataAttribute)) + $endDataAttribute;
+                  }
+                  critriaAttributes.push($critriaAttribute);
+                }
+              });
+              var $showRecords = records;
+              if (critriaAttributes.length > 0) {
+                $.each(critriaAttributes, function (i, filterValue) {
+                  $showRecords = $showRecords.filter(filterValue);
+                });
+              }
+              $showRecords.show();
+              headerCount.html($showRecords.length + ' channels filtered');
+              dftr.removeAttr('disabled');
+              $(".fin").val('');
+            });
+            $(".fin").keyup(function () {
+              var filter = $(this).val(),
+                count = 0;
+              $('select.dftr').prop('selectedIndex', 0);
+              $(".tvv-item").each(function () {
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                  $(this).fadeOut();
+                } else {
+                  $(this).show();
+                  count++;
+                }
+              });
+            });
+          });
+        </script>
+
+        <script src="js/jquery-3.6.1.js"></script>
+        <script src="js/bootstrap.bundle.min.js"> </script>
+<script disable-devtool-auto="true" src="https://cdn.jsdelivr.net/npm/disable-devtool" clear-log="true" disable-select="true" disable-copy="true" disable-cut="true" disable-paste="true"></script>
+
+
+</div></div></center></body></html>
